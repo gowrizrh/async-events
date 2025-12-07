@@ -1,0 +1,32 @@
+name: Build Docs
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install -U pip
+          pip install sphinx
+
+          # Add any extra extensions here, e.g.:
+          pip install sphinx-rtd-theme
+
+      - name: Build docs
+        run: |
+          make html
+          # or: sphinx-build -b html . _build/html
