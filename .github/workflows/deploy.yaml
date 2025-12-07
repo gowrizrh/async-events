@@ -2,8 +2,17 @@ name: Build Docs
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -26,7 +35,19 @@ jobs:
           # Add any extra extensions here, e.g.:
           pip install sphinx-rtd-theme
 
-      - name: Build docs
+      - name: Build Sphinx HTML
         run: |
           make html
           # or: sphinx-build -b html . _build/html
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: docs
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
