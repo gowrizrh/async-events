@@ -26,3 +26,4 @@ exclude_patterns = []
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 html_extra_path = ['_static/google0e23572a578cd0d6.html']
+html_favicon = '_static/favicon.ico'
