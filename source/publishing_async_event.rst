@@ -60,30 +60,30 @@ In the ``sales.order.created`` example, analogous to the sales order get API, an
             "id" => $order->getId();
         ]
 
-To publish an asynchronous event, supply an array in which the first element defines the event name. The second element
-contains a serialized JSON string representing the arguments required by the service method.
 
+An async event can be published using the ``MageOS\AsyncEvents\Api\AsyncEventPublisherInterface``.
+
+Provide the event name and the required arguments to the ``publish`` method. The store ID is optional. If not
+provided, all subscribers to the event will be notified.
 
 .. code-block:: php
-   :emphasize-lines: 15,16,17,18
 
    <?php
 
-    use MageOS\AsyncEvents\Helper\QueueMetadataInterface;
+    use MageOS\AsyncEvents\Api\AsyncEventPublisherInterface;
 
     // ...
 
-        public function sendOrder(Order $order): void
+        public function publishOrder(Order $order): void
         {
             $arguments = [
                 "id" => $order->getId();
             ]
 
             $this->publisher->publish(
-                QueueMetadataInterface::EVENT_QUEUE,
-                [
                     "sales.order.created",
-                    $this->json->serialize($arguments)
+                    $arguments,
+                    $storeId // optional
                 ]
             );
         }
