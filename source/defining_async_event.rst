@@ -3,7 +3,7 @@ Defining an Async Event
 
 This module does not ship with any predefined events; it focuses solely on providing the runtime.
 
-For example, the `mageos-common-async-events` project defines a set of commonly used asynchronous events and implements
+For example, the ``mageos-common-async-events`` project defines a set of commonly used asynchronous events and implements
 the logic that determines when an event is triggered and how duplicate events are handled.
 
 When defining an asynchronous event, consider the following two aspects:
@@ -12,7 +12,7 @@ When defining an asynchronous event, consider the following two aspects:
 2. When does the event occur?
 
 Naming Events
------------------
+-------------
 
 It is conventional to name events using dot-separated words, ending with a verb; for example, ``sales.order.created``,
 ``inventory.stock.depleted``, or ``invoice.paid``.

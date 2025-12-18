@@ -1,5 +1,8 @@
-MageOS Async Events documentation
-=================================
+MageOS Async Events Handbook
+============================
+
+This handbook provides a comprehensive guide to using MageOS Async Events in your Magento/MageOS applications. It covers
+the basics of async events, how to implement them, advanced usage, and best practices.
 
 .. toctree::
    :maxdepth: 2

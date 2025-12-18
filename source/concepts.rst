@@ -22,9 +22,9 @@ contains the name and the schema of the event.
 
    The schema is defined by the return type of the service class and the method.
 
-   This is smart because it allows you to reuse the same service methods as a
-   REST API, which mean any changes to the service method like plugins or
-   extension attributes are also available in async event payloads!
+   This is elegant because it allows you to reuse the same service methods as a
+   REST API, which means any changes to the service method like field updates, plugins
+   or extension attributes are also available in async event payloads!
 
 Subscription
 ------------
