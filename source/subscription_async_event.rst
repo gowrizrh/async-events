@@ -1,4 +1,4 @@
-Subscribing to Asynchronous Events
+Subscribing to Async Events
 ===================================
 
 This section covers an example of creating a subscription which will receive notifications via HTTPS.
@@ -49,3 +49,36 @@ GCP
 The https://github.com/mage-os/mageos-async-events-gcp package provides support for using Google Cloud Platform services as async event sinks.
 
 * Pub/Sub
+
+Custom Sinks
+----------------
+
+You can create your own custom notifiers by implementing the ``MageOS\AsyncEvents\Service\AsyncEvent\NotifierInterface`` interface.
+
+.. code-block:: php
+
+    namespace Vendor\Module\Service\AsyncEvent;
+
+    use MageOS\AsyncEvents\Service\AsyncEvent\NotifierInterface;
+    use MageOS\AsyncEvents\Model\AsyncEvent\Subscription;
+    use MageOS\AsyncEvents\Api\Data\ResultInterface;
+
+    class CustomNotifier implements NotifierInterface
+    {
+        public function notify(AsyncEventInterface $asyncEvent, CloudEventImmutable $event): ResultInterface
+        {
+            // Your custom notification logic here
+        }
+    }
+
+Once implemented, you can register your notifier using dependency injection configuration.
+
+.. code-block:: xml
+
+    <type name="MageOS\AsyncEvents\Service\AsyncEvent\NotifierFactory">
+        <arguments>
+            <argument name="notifierClasses" xsi:type="array">
+                <item name="notifier_key" xsi:type="object">Vendor\Module\Service\AsyncEvent\CustomNotifier</item>
+            </argument>
+        </arguments>
+    </type>

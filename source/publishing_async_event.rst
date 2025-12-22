@@ -19,8 +19,6 @@ method.
 
 .. code-block:: php
 
-    <?php
-
     interface OrderRepositoryInterface
     {
 
@@ -52,9 +50,7 @@ APIs.
 In the ``sales.order.created`` example, analogous to the sales order get API, an ``id`` argument is required.
 
 .. code-block:: php
-   :emphasize-lines: 4
-
-    <?php
+   :emphasize-lines: 2
 
         $arguments = [
             "id" => $order->getId();
@@ -67,8 +63,6 @@ Provide the event name and the required arguments to the ``publish`` method. The
 provided, all subscribers to the event will be notified.
 
 .. code-block:: php
-
-   <?php
 
     use MageOS\AsyncEvents\Api\AsyncEventPublisherInterface;
 
