@@ -87,3 +87,5 @@ provided, all subscribers to the event will be notified.
                 ]
             );
         }
+
+Creating a subscription for an async event is covered in the next section.

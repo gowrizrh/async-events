@@ -17,3 +17,4 @@ the basics of async events, how to implement them, advanced usage, and best prac
 
    defining_async_event
    publishing_async_event
+   subscription_async_event
