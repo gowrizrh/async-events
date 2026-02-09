@@ -50,6 +50,13 @@ The https://github.com/mage-os/mageos-async-events-gcp package provides support 
 
 * Pub/Sub
 
+Azure
+---------------------
+
+The https://github.com/mage-os/mageos-async-events-azure package provides support for using Microsoft Azure services as async event sinks.
+
+* Event Grid
+
 Custom Sinks
 ----------------
 
